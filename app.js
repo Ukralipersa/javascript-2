@@ -1,22 +1,31 @@
 'use strict';
 
-const flights = ['Russia', 'USA', 'London', 'USA'];
+const weatherMap = new Map();
 
-const setFlights = new Set(flights);
-console.log(setFlights);
-console.log(setFlights.size);
-console.log(setFlights.has('Russia'));
-// setFlights.clear();
-setFlights.add('Paris');
-setFlights.delete('London');
-console.log(setFlights);
+weatherMap.set('London', '10').set('Moscow', '7');
 
-for (const flight of setFlights) {
-	console.log(flight);
-}
+console.log(weatherMap.get('Moscow'));
+console.log(weatherMap.get('not found'));
 
-console.log([...setFlights]);
+console.log(weatherMap.has('Moscow'));
+console.log(weatherMap.has('not found'));
 
-const serObj = new Set([{ a: 1 }, { b: 2 }, { b: 2 }]);
-console.log(serObj);
-console.log(new Set('abcd'));
+console.log(weatherMap.delete('London'));
+weatherMap.clear();
+
+const arr = [1, 2, 3]
+
+weatherMap
+    .set(1, 5)
+    .set(true, 'yes')
+    .set(false, 'no')
+    .set(arr, 'array')
+    .set({a: 1}, {b: 1})
+
+
+
+console.log(weatherMap);
+console.log(weatherMap.size);
+
+console.log(weatherMap.get(arr))
+console.log(weatherMap.get({a: 1}))
