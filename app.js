@@ -1,17 +1,13 @@
 'use strict';
-
+/* Необходимо поменять местами ключи и значения в следующем Map */
 const weatherMap = new Map([
-    ['London', 10],
-    ['Moscow', 7],
-    ['Paris', 14]
-    ])
+	['London', 10],
+	['Moscow', 7],
+	['Paris', 14],
+]);
 
-for(const [key, value] of weatherMap){
-    console.log(key)
-    console.log(value)
+const weatherMap2 = new Map(
+	[...weatherMap].map(([key, value]) => [value, key])
+);
 
-}
-
-console.log([... weatherMap])
-console.log([...weatherMap.keys()])
-console.log([...weatherMap.values()])
+console.log(weatherMap2);
