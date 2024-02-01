@@ -1,13 +1,32 @@
 'use strict';
-/* Необходимо поменять местами ключи и значения в следующем Map */
-const weatherMap = new Map([
-	['London', 10],
-	['Moscow', 7],
-	['Paris', 14],
-]);
+let a = { a: 1 };
+let b = { a: 1 };
 
-const weatherMap2 = new Map(
-	[...weatherMap].map(([key, value]) => [value, key])
-);
+const map = new WeakMap();
+map.set(a, 'testA');
+map.set(b, 'testB');
 
-console.log(weatherMap2);
+console.log(map.get(a));
+console.log(map.has(a));
+console.log(map);
+
+a = null;
+
+setTimeout(() => {
+	console.log(map);
+}, 1500);
+
+let cache = new WeakMap();
+
+function getValue(obj) {
+	if (!cache.has(obj)) {
+		const res = 1; /* Типа сложный расчет */
+		cache.set(obj, res);
+	}
+	return cache.get(obj);
+}
+
+const res = getValue(b);
+console.log(res);
+const res2 = getValue(b);
+console.log(res2);
