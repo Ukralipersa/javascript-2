@@ -1,31 +1,35 @@
 'use strict';
 
-const options1 = {
-	style: 'currency',
-	currency: 'RUB',
-	// useGrouping: false,
-};
+/*
+Напишите функцию, которая принимает 3 параметра:
+- Сумма
+- Валюта исходная
+- Валюта для конвертации
+И возвращает строку уже сконвертированной суммы с постфиксом
+валюты. Если не смог, mo null.
+Для примера 3 валюты.
+*/
 
-const options2 = {
-	style: 'currency',
-	currency: 'USD',
-};
+function convert(sum, initialCurrency, convertCurrency) {
+	const allCurrencies = [
+		{ name: 'USD', mult: 1 },
+		{ name: 'RUB', mult: 1 / 100 },
+		{ name: 'EUR', mult: 1.1 },
+	];
 
-const options3 = {
-	style: 'decimal',
-};
+	const initial = allCurrencies.find(c => c.name === initialCurrency);
+	if (!initial) {
+		return null;
+	}
+	const convert = allCurrencies.find(c => c.name === convertCurrency);
+	if (!convert) {
+		return null;
+	}
 
-const options4 = {
-	style: 'percent',
-};
+	return new Intl.NumberFormat('ru-RU', {
+		style: 'currency',
+		currency: convert.name,
+	}).format((sum * initial.mult) / convert.mult);
+}
 
-const options5 = {
-	style: 'unit',
-	unit: 'celsius',
-};
-
-console.log(new Intl.NumberFormat('ru-RU', options1).format(23000));
-console.log(new Intl.NumberFormat('en-US', options2).format(23000));
-console.log(new Intl.NumberFormat('ru-RU', options3).format(10000));
-console.log(new Intl.NumberFormat('ru-RU', options4).format(0.1));
-console.log(new Intl.NumberFormat('ru-RU', options5).format(25));
+console.log(convert(100, 'EUR', 'RUB'));
