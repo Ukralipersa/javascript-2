@@ -1,19 +1,10 @@
 'use strict';
 
-console.log(Math.round(1.4));
-console.log(Math.round(1.6));
-console.log(Math.round(1.499999));
+/*
+Написать функцию, которая принимает min и max
+и возвращает случайное целое число между ними, включая их
+*/
 
-console.log(Math.ceil(1.1));
-console.log(Math.ceil(1));
-console.log(Math.ceil(0.1));
-
-console.log(Math.floor(0.1));
-console.log(Math.floor(2.9));
-
-console.log(Math.trunc(2.9));
-console.log(Math.trunc(2.1));
-console.log(Math.trunc(1.11111));
-
-console.log((1.499999).toFixed(1));
-console.log(Number((1.499999).toFixed(1)));
+function getRandomIntInclusive(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) + min); // Максимум и минимум включаются
+}
