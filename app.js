@@ -1,17 +1,13 @@
 'use strict';
 
-console.log(15 / 2);
-console.log(15 % 2);
-console.log(14 % 2);
+const bigNum1 = 350_500_000;
+const bigNum2 = 350500000;
 
-const isEven = n => n % 2 === 0;
-const isOdd = n => n % 2 === 1;
+const payment = 20_10;
+const paymentInR1 = 20.1;
+const paymentInR2 = 2_0.1_0;
 
-function isEvenFunc(n) {
-	return n % 2 === 0;
-}
-
-console.log(isEven(17));
-console.log(isEven(12));
-console.log(isOdd(17));
-console.log(isOdd(12));
+console.log(Number('350_500_000'));
+console.log(Number('350500000'));
+console.log(Number.parseInt('350_500_000'));
+console.log(Number.parseFloat('350_500_000.10'));
