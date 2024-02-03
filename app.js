@@ -1,11 +1,25 @@
 'use strict';
 
-let a = { a: 1 };
-let b = { b: 2 };
+console.log(10 === 10.0);
+// 0 1
+console.log(0.1 + 0.2 === 0.3);
+console.log(0.1 + 0.2);
 
-const set = new WeakSet([a, b]);
-a = null;
+console.log(Number('10'));
+console.log(+'20');
+console.log(Number.parseInt('11', 10));
+console.log(Number.parseInt('11 sec', 10));
+console.log(Number.parseInt('sec 11', 10)); // NaN
 
-setTimeout(() => {
-	console.log(set), 1500;
-});
+console.log(Number.parseFloat('11.5', 10));
+console.log(Number.parseFloat('11.5 sec', 10));
+console.log(Number.parseFloat('sec 11.5', 10));
+
+console.log(Number.isNaN(Number('10abc')));
+console.log(Number.isNaN(10 / 0));
+console.log(Number.isFinite(10 / 0));
+console.log(Number.isFinite(Number('10abc')));
+console.log(Number.isFinite(10));
+
+console.log(Number.isInteger(10));
+console.log(Number.isInteger(10.4));
