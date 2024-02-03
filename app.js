@@ -1,27 +1,31 @@
 'use strict';
 
-const max = 2 ** 53 - 1;
+const options1 = {
+	style: 'currency',
+	currency: 'RUB',
+	// useGrouping: false,
+};
 
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(Number.MIN_SAFE_INTEGER);
+const options2 = {
+	style: 'currency',
+	currency: 'USD',
+};
 
-console.log(max);
-console.log(max + 1);
-console.log(max + 2);
-console.log(max + 3);
+const options3 = {
+	style: 'decimal',
+};
 
-console.log(1321321321321321321321321n);
-console.log(BigInt(1321321321321321321321321)); // некорректно, нужна строка
-console.log(BigInt('1321321321321321321321321'));
+const options4 = {
+	style: 'percent',
+};
 
-console.log(10n + 10n);
-console.log(10n + BigInt(10));
-console.log(10n * 10n);
-console.log(1321321321321321321321321n * 1321321321321321321321321n);
+const options5 = {
+	style: 'unit',
+	unit: 'celsius',
+};
 
-console.log(10n / 3n);
-
-console.log(10n < 20);
-console.log(10n == 10);
-console.log(10n === 10);
-console.log(typeof 10n);
+console.log(new Intl.NumberFormat('ru-RU', options1).format(23000));
+console.log(new Intl.NumberFormat('en-US', options2).format(23000));
+console.log(new Intl.NumberFormat('ru-RU', options3).format(10000));
+console.log(new Intl.NumberFormat('ru-RU', options4).format(0.1));
+console.log(new Intl.NumberFormat('ru-RU', options5).format(25));
