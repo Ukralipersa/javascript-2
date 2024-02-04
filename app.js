@@ -1,15 +1,28 @@
 'use strict';
 
-const first = new Date(2024, 10, 4);
-const second = new Date(2024, 10, 4);
+/*
+Сделать функцию, которая принимает пользователя и 
+проверяет, есть ли у него сегодня день рождения или нет
+*/
 
-console.log(first > second);
+const user = {
+	name: 'Oleg',
+	birthday: '02/04/2022',
+};
 
-console.log(first == second);
+function isBirthdayToday(user) {
+	const now = new Date();
+	const userBirthday = new Date(user.birthday);
+	const nowMonth = now.getMonth();
+	const nowDate = now.getDate();
+	const userMonth = userBirthday.getMonth();
+	const userDate = userBirthday.getDate();
 
-console.log(first === second);
+	if (nowMonth === userMonth && nowDate === userDate) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
-console.log(first.getTime() == second.getTime());
-console.log(first.getTime() === second.getTime());
-console.log(Number(first) === Number(second));
-console.log(+first === +second);
+console.log(isBirthdayToday(user));
