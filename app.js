@@ -1,35 +1,29 @@
 'use strict';
 
-/*
-Напишите функцию, которая принимает 3 параметра:
-- Сумма
-- Валюта исходная
-- Валюта для конвертации
-И возвращает строку уже сконвертированной суммы с постфиксом
-валюты. Если не смог, mo null.
-Для примера 3 валюты.
-*/
+const now = new Date();
+console.log(now);
 
-function convert(sum, initialCurrency, convertCurrency) {
-	const allCurrencies = [
-		{ name: 'USD', mult: 1 },
-		{ name: 'RUB', mult: 1 / 100 },
-		{ name: 'EUR', mult: 1.1 },
-	];
+console.log(new Date('02-01-2023'));
+console.log(new Date('02/01/2023'));
+console.log(new Date('2023/01/02'));
+console.log(new Date('10 jan 2023'));
+console.log(new Date('Feb 04 2024 11:36:58'));
 
-	const initial = allCurrencies.find(c => c.name === initialCurrency);
-	if (!initial) {
-		return null;
-	}
-	const convert = allCurrencies.find(c => c.name === convertCurrency);
-	if (!convert) {
-		return null;
-	}
+console.log(new Date(2024, 11, 31, 10, 5, 10));
+console.log(new Date(2024, 12, 10 + 100));
+console.log(new Date(0));
+console.log(new Date(1 * 24 * 60 * 60 * 1000));
+console.log(Date.now());
+console.log(new Date(Date.now()));
 
-	return new Intl.NumberFormat('ru-RU', {
-		style: 'currency',
-		currency: convert.name,
-	}).format((sum * initial.mult) / convert.mult);
-}
+console.log(now.getFullYear());
+console.log(now.getMonth());
+console.log(now.getDate());
+console.log(now.getDay());
+console.log(now.getHours());
+console.log(now.getMinutes());
+console.log(now.getSeconds());
+console.log(now.getTime());
 
-console.log(convert(100, 'EUR', 'RUB'));
+console.log(new Date(now.setFullYear(2030)));
+console.log(new Date(now.setMonth(10)));
