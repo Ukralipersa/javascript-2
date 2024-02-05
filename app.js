@@ -1,27 +1,18 @@
 'use strict';
 
-const date = new Date();
+console.log(1);
 
-console.log(date);
-console.log(new Intl.DateTimeFormat('ru-RU').format(date));
+const messages = ['Bash!', 'Boom!'];
 
-const option1 = {
-	hour: 'numeric',
-	minute: 'numeric',
-};
+const boomTimer = setTimeout(
+	(message1, message2) => {
+		console.log(2);
+		console.log(message1);
+		console.log(message2);
+	},
+	2000,
+	...messages
+);
+// clearTimeout(boomTimer);
 
-console.log(new Intl.DateTimeFormat('ru-RU', option1).format(date));
-
-const option2 = {
-	hour: 'numeric',
-	minute: 'numeric',
-	month: 'short',
-	weekday: 'long',
-	year: '2-digit',
-};
-
-console.log(new Intl.DateTimeFormat('en-US', option2).format(date));
-console.log(new Intl.DateTimeFormat('ru-RU', option2).format(date));
-
-console.log(navigator.language);
-console.log(new Intl.DateTimeFormat(navigator.language, option2).format(date));
+console.log(3);
