@@ -1,32 +1,47 @@
 'use strict';
 
-const Book = function (title, author) {
-	this.author = author;
-	this.title = title;
-	this.isRead = false;
+/* Реализовать на функциях и прототипах корзину товаров с методами
+- Добавить товар
+- Увеличить число товаров
+- Уменьшить число товаров (удалить если их 0)
+*/
+const product = { id: 1, name: 'Bread', count: 1 };
+
+const Cart = function () {
+	this.products = [];
+};
+Cart.prototype.addProduct = function (product) {
+	if (this.products.find(product => product.id == product.id)) {
+		return;
+	}
+	this.products.push(product);
+};
+Cart.prototype.increaseAmount = function (id) {
+	this.products = this.products.map(product => {
+		if (product.id == id) {
+			product.count++;
+			return product;
+		}
+		return product;
+	});
 };
 
-Book.prototype.read = function () {
-	this.isRead = true;
+Cart.prototype.decreaseAmount = function (id) {
+	this.products = this.products
+		.map(product => {
+			if (product.id == id) {
+				product.count--;
+				return product;
+			}
+			return product;
+		})
+		.filter(product => product.count > 0);
 };
 
-Book.prototype.cover = 'Paper';
+const cart = new Cart();
+cart.addProduct(product);
+cart.increaseAmount(1);
+cart.decreaseAmount(1);
+cart.decreaseAmount(1);
 
-const lordOfTheRings = new Book('Lord of the Rings', 'Tolkien');
-lordOfTheRings.read();
-
-console.log(lordOfTheRings);
-console.log(lordOfTheRings.cover);
-console.log(lordOfTheRings.hasOwnProperty('cover'));
-console.log(lordOfTheRings.hasOwnProperty('author'));
-
-console.log(lordOfTheRings.__proto__);
-
-console.log(lordOfTheRings.__proto__ === Book.prototype);
-console.log(Book.prototype.isPrototypeOf(lordOfTheRings));
-console.log(Book.prototype.isPrototypeOf(Book));
-
-Array.prototype.first = function () {};
-
-const a = [5];
-a.first;
+console.log(cart);
