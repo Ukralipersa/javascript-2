@@ -1,47 +1,14 @@
 'use strict';
 
-/* Реализовать на функциях и прототипах корзину товаров с методами
-- Добавить товар
-- Увеличить число товаров
-- Уменьшить число товаров (удалить если их 0)
-*/
-const product = { id: 1, name: 'Bread', count: 1 };
-
-const Cart = function () {
-	this.products = [];
+const Book = function (title, author) {
+	this.author = author;
+	this.title = title;
 };
-Cart.prototype.addProduct = function (product) {
-	if (this.products.find(product => product.id == product.id)) {
-		return;
-	}
-	this.products.push(product);
-};
-Cart.prototype.increaseAmount = function (id) {
-	this.products = this.products.map(product => {
-		if (product.id == id) {
-			product.count++;
-			return product;
-		}
-		return product;
-	});
-};
+Book.prototype.isRead = false;
 
-Cart.prototype.decreaseAmount = function (id) {
-	this.products = this.products
-		.map(product => {
-			if (product.id == id) {
-				product.count--;
-				return product;
-			}
-			return product;
-		})
-		.filter(product => product.count > 0);
-};
+const lordOfTheRings = new Book('1', '1');
 
-const cart = new Cart();
-cart.addProduct(product);
-cart.increaseAmount(1);
-cart.decreaseAmount(1);
-cart.decreaseAmount(1);
+console.log(lordOfTheRings.hasOwnProperty('title'));
+console.log(Book.prototype.__proto__);
 
-console.log(cart);
+new Object();
