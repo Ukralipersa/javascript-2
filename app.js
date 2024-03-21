@@ -1,7 +1,10 @@
 'use strict';
 
-fetch('https://dummyjson.com/products')
-	.then(response => response.json())
+fetch('https://dummyjson.com/products1')
+	.then(response => {
+		console.log(response);
+		return response.json();
+	})
 	.then(({ products }) => {
 		console.log(products);
 		return fetch('https://dummyjson.com/products/' + products[0].id);
@@ -9,4 +12,5 @@ fetch('https://dummyjson.com/products')
 	.then(response => response.json())
 	.then(data => {
 		console.log(data);
-	});
+	})
+	.catch(error => console.log(error));
