@@ -11,7 +11,14 @@ request.send();
 
 request.addEventListener('load', function () {
 	const { products } = JSON.parse(this.responseText);
-	const sum = products.reduce((acc, p) => (acc += p.price), 0);
-	console.log('products:', products);
-	console.log(sum / products.length);
+	console.log(products);
+
+	const request = new XMLHttpRequest();
+	request.open('GET', 'https://dummyjson.com/products/' + products[0].id);
+	request.send();
+
+	request.addEventListener('load', function () {
+		const data = JSON.parse(this.responseText);
+		console.log(data);
+	});
 });
