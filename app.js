@@ -1,22 +1,22 @@
 'use strict';
 
-fetch('https://dummyjson.com/productss')
-	.then(response => {
+function getData(url, errorMessage, method = 'GET') {
+	return fetch(url, {
+		method,
+	}).then(response => {
 		if (!response.ok) {
-			throw new Error(`Is error ${response.status}`);
+			throw new Error(`${errorMessage} ${response.status}`);
 		}
 		return response.json();
-	})
+	});
+}
+
+getData('https://dummyjson.com/products', 'Can not get products')
 	.then(({ products }) => {
 		console.log(products);
-		return fetch('https://dummyjson.com/products/' + products[0].id);
+		return getData('https://dummyjson.com/products/' + products[0].id, 'Can not get products');
 	})
-	.then(response => {
-		if (!response.ok) {
-			throw new Error(`Is error ${response.status}`);
-		}
-		response.json();
-	})
+
 	.then(data => {
 		console.log(data);
 	})
