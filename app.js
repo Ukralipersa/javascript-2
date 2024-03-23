@@ -1,14 +1,32 @@
 'use strict';
 
-const prom = new Promise(resolve => {
-	console.log('Constructor');
-	// for (let i = 0; i < 10000000000; i++) {}
-	setTimeout(() => {
-		resolve('Timer');
-	}, 1000);
-});
+/*
+Сделать функция myFetch, которая выполняет внутри
+XMLHttpRequest
+*/
 
-prom.then(data => console.log(data));
+function myFetch(url) {
+	return new Promise((resolve, reject) => {
+		const request = new XMLHttpRequest();
+		request.open('GET', url);
+		request.send();
 
-Promise.reject(new Error('Error')).catch(error => console.error(error));
-Promise.resolve('Instant').then(data => console.log(data));
+		request.addEventListener('load', function () {
+			if (this.status > 400) {
+				reject(new Error(this.responseText));
+			}
+			resolve(this.responseText);
+		});
+
+		request.addEventListener('error', function () {
+			reject(new Error(this.status));
+		});
+		request.addEventListener('timeout', function () {
+			reject(new Error('Timeout'));
+		});
+	});
+}
+
+myFetch('https://dummyjson.com/productss')
+	.then(data => console.log(data))
+	.catch(err => console.error(err));
