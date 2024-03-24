@@ -1,0 +1,25 @@
+.button {
+	display: block;
+	margin: 0 auto;
+	background: purple;
+	color: white;
+	border: none;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.wrapper > div {
+	background: #333;
+	padding: 30px;
+	color: white;
+	border-radius: 10px;
+}
