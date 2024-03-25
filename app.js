@@ -1,18 +1,25 @@
 'use strict';
 
 const wrapper = document.querySelector('.wrapper');
+console.log(wrapper);
 
-for (let i = 0; i < 100; i++) {
-	const el = document.createElement('div');
-	el.innerHTML = `Пользователь с id ${i}`;
-	el.setAttribute('data-id', i);
-	// el.addEventListener('click', function () {
-	// 	console.log(`Deleted user  ${i}`);
-	// });
-	wrapper.append(el);
-}
+const inner = wrapper.querySelector('.inner');
+console.log(inner);
 
-wrapper.addEventListener('click', function (e) {
-	const i = e.target.getAttribute('data-id');
-	console.log(`Deleted user  ${i}`);
-});
+const button = document.querySelector('.button');
+console.log(button);
+
+console.log(inner.childNodes);
+console.log(inner.children);
+
+console.log(inner.parentElement);
+console.log(inner.parentNode);
+
+console.log(button.closest('.wrapper'));
+
+console.log(button.previousElementSibling);
+console.log(button.previousSibling);
+console.log(button.nextElementSibling);
+console.log(button.nextSibling);
+
+console.log(button.parentElement.children);
