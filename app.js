@@ -1,48 +1,18 @@
 'use strict';
 
-const button = document.querySelector('.button');
-const inner = document.querySelector('.inner');
 const wrapper = document.querySelector('.wrapper');
 
-button.addEventListener('click', function (e) {
-	console.log('button');
-	console.log(e.target);
-	console.log(e.currentTarget);
-
-	this.style.backgroundColor = 'purple';
-	e.stopPropagation();
-});
-
-inner.addEventListener(
-	'click',
-	function (e) {
-		console.log('inner');
-		console.log(e.target);
-		console.log(e.currentTarget);
-
-		this.style.backgroundColor = 'blue';
-
-		// e.stopPropagation();
-	},
-	true
-);
-
-wrapper.addEventListener(
-	'click',
-	function (e) {
-		console.log('wrapper');
-		console.log(e.target);
-		console.log(e.currentTarget);
-
-		this.style.backgroundColor = 'green';
-	},
-	true
-);
+for (let i = 0; i < 100; i++) {
+	const el = document.createElement('div');
+	el.innerHTML = `Пользователь с id ${i}`;
+	el.setAttribute('data-id', i);
+	// el.addEventListener('click', function () {
+	// 	console.log(`Deleted user  ${i}`);
+	// });
+	wrapper.append(el);
+}
 
 wrapper.addEventListener('click', function (e) {
-	console.log('wrapper');
-	console.log(e.target);
-	console.log(e.currentTarget);
-
-	this.style.backgroundColor = 'green';
+	const i = e.target.getAttribute('data-id');
+	console.log(`Deleted user  ${i}`);
 });
