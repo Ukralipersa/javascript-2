@@ -1,14 +1,48 @@
 'use strict';
 
 const button = document.querySelector('.button');
+const inner = document.querySelector('.inner');
+const wrapper = document.querySelector('.wrapper');
 
-const eventHandler = event => {
-	console.log('1');
-};
+button.addEventListener('click', function (e) {
+	console.log('button');
+	console.log(e.target);
+	console.log(e.currentTarget);
 
-button.addEventListener('mouseover', eventHandler);
+	this.style.backgroundColor = 'purple';
+	e.stopPropagation();
+});
 
-button.addEventListener('click', event => {
-	console.log('2');
-	button.removeEventListener('click', eventHandler);
+inner.addEventListener(
+	'click',
+	function (e) {
+		console.log('inner');
+		console.log(e.target);
+		console.log(e.currentTarget);
+
+		this.style.backgroundColor = 'blue';
+
+		// e.stopPropagation();
+	},
+	true
+);
+
+wrapper.addEventListener(
+	'click',
+	function (e) {
+		console.log('wrapper');
+		console.log(e.target);
+		console.log(e.currentTarget);
+
+		this.style.backgroundColor = 'green';
+	},
+	true
+);
+
+wrapper.addEventListener('click', function (e) {
+	console.log('wrapper');
+	console.log(e.target);
+	console.log(e.currentTarget);
+
+	this.style.backgroundColor = 'green';
 });
